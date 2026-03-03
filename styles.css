@@ -133,7 +133,7 @@ a:focus {
 }
 
 .header-container {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 1.2rem 2rem;
   display: flex;
@@ -266,7 +266,7 @@ a:focus {
   z-index: 10;
   text-align: center;
   color: white;
-  max-width: 900px;
+  max-width: 100%;
   padding: 2rem;
   animation: fadeInUp 1s ease-out;
 }
@@ -546,7 +546,7 @@ a:focus {
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
-  min-width: 200px;
+  min-width: 100%;
 }
 
 .filter-group label {
