@@ -965,6 +965,12 @@ white-space: nowrap;
   .property-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+   @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+   }
   
   .about-content {
     grid-template-columns: 1fr;
