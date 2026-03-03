@@ -948,7 +948,7 @@ a:focus {
 }
 
 /* ===== Responsive Design ===== */
-@media (max-width: 1024px) {
+@media (max-width: 100%) {
   .property-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
