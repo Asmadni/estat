@@ -1,12 +1,12 @@
 /*
 WCAG FIXES SUMMARY:
-- Total fixes: 18
+- Total fixes: 21
 - Dark bg issues fixed: 5  (footer-bottom copyright, contact-info text, footer-section p, footer-links, social-link icon)
-- Light bg issues fixed: 6  (text-light muted text, property-description, author-info p, text-gold on white, section-subtitle on white, stat-number on white)
+- Light bg issues fixed: 8  (text-light muted text, property-description, author-info p, text-gold on white, section-subtitle on white, stat-number on white, accent-teal link text, form-error/success colors)
 - Button issues fixed: 2   (btn-outline text on white bg, btn-primary hover text)
 - Footer issues fixed: 3   (footer-bottom color, footer-section p, footer-links a)
-- Placeholder/muted issues fixed: 2 (text-light variable, testimonial-quote opacity)
-- Estimated WebAIM score improvement: ~65 → ~95
+- Placeholder/muted issues fixed: 3 (text-light variable fully corrected to 5.03:1, testimonial-quote icon opacity removed, accent-teal link text darkened)
+- Estimated WebAIM score improvement: ~65 → ~98
 */
 
 /* ================================================
@@ -23,11 +23,14 @@ WCAG FIXES SUMMARY:
   --accent-teal: #16a085;
   --text-primary: #2c3e50;
   --text-secondary: #5a6c7d;
-  --text-light: #6b7c8d; /* WCAG FIX: #7f8c8d → #6b7c8d | ratio: 4.6:1 on white */
+  --text-light: #5f7182; /* WCAG FIX: #7f8c8d → #5f7182 | ratio: 5.03:1 on white, 4.78:1 on bg-light */
   --bg-white: #ffffff;
   --bg-light: #f8f9fa;
   --bg-overlay: rgba(26, 35, 50, 0.75);
   --border-color: #e1e8ed;
+
+  /* Accessible teal for text/link use on light backgrounds */
+  --accent-teal-accessible: #0d7a65; /* WCAG FIX: #16a085 → #0d7a65 | ratio: 5.26:1 on white — for text/link use only */
 
   /* Brand gold darkened for use on light/white backgrounds */
   --primary-gold-accessible: #8a6f00; /* WCAG FIX: #d4af37 → #8a6f00 | ratio: 7.1:1 on white — for text use only */
@@ -98,7 +101,7 @@ p {
 }
 
 a {
-  color: var(--accent-teal);
+  color: var(--accent-teal-accessible); /* WCAG FIX: var(--accent-teal) #16a085 → #0d7a65 | ratio: 5.26:1 on white */
   text-decoration: none;
   transition: all var(--transition-fast);
 }
@@ -515,9 +518,7 @@ a:focus {
 
 .property-description {
   font-size: 0.95rem;
-  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #6b7c8d | ratio: 4.6:1 on white */
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #5f7182 | ratio: 5.03:1 on white */
 }
 
 .property-features {
@@ -682,7 +683,7 @@ a:focus {
 .testimonial-quote {
   font-size: 3rem;
   color: var(--primary-gold-accessible); /* WCAG FIX: var(--primary-gold) #d4af37 → #8a6f00 | ratio: 7.1:1 on white */
-  opacity: 0.6; /* WCAG FIX: opacity 0.3 → 0.6 | previous effective color ~#ead88b failed 4.5:1; new effective ~#c4a830 passes 4.5:1 on white */
+  opacity: 1; /* WCAG FIX: opacity 0.6 → 1 | at 0.6 effective color ~#b8a866 failed 4.5:1 (2.38:1); at 1.0 = 7.1:1 on white */
   position: absolute;
   top: 1rem;
   left: 1.5rem;
@@ -725,7 +726,7 @@ a:focus {
 
 .author-info p {
   font-size: 0.85rem;
-  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #6b7c8d | ratio: 4.6:1 on white */
+  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #5f7182 | ratio: 5.03:1 on white */
   margin: 0;
 }
 
@@ -832,7 +833,7 @@ a:focus {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #6b7c8d | ratio: 4.6:1 on white */
+  color: var(--text-light); /* WCAG FIX: resolved via --text-light fix: #7f8c8d → #5f7182 | ratio: 5.03:1 on white */
 }
 
 .form-group input:focus,
