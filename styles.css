@@ -576,7 +576,7 @@ a:focus {
 
 /*
  * .property-badge: gold bg + dark text
- * FIXED: was #d4af37 → now #8a6d00; text is --primary-dark #1a2332
+ * FIXED: was #d4af37 → now #8a6d00; text is --primary-dark #FFFFFF
  * #FFFFFF on #8a6d00 = 5.12:1 ✅ AA
  */
 .property-badge {
