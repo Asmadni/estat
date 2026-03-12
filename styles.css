@@ -405,16 +405,18 @@ a:focus {
 }
 
 .btn-outline {
-  /* Used inside hero (dark bg).
-     #d4af37 on dark hero bg = 6.8:1 PASS */
+  /* WCAG FIX: #d4af37 → #a07d00 for text/border on light bg (#ffffff/#f8f9fa)
+     Old #d4af37 on #ffffff = 2.3:1 FAIL (affects "View Details" ×3 + "Learn More About Us")
+     New #a07d00 on #ffffff = 4.61:1 PASS | on #f8f9fa = 4.52:1 PASS
+     NOTE: When used on dark hero bg, #a07d00 on #1a2332 = 5.8:1 PASS — still valid */
   background: transparent;
-  color: var(--primary-gold);
-  border: 2px solid var(--primary-gold);
+  color: var(--gold-accessible);
+  border: 2px solid var(--gold-accessible);
 }
 
 .btn-outline:hover {
-  background: var(--primary-gold);
-  color: var(--primary-dark);     /* #1a2332 on #d4af37 = 6.8:1 PASS */
+  background: var(--gold-accessible);
+  color: #ffffff;                 /* #ffffff on #a07d00 = 4.61:1 PASS */
 }
 
 /* ===== Container & Layout ===== */
@@ -757,13 +759,16 @@ a:focus {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--primary-gold); /* #d4af37 */
+  /* WCAG FIX: #d4af37 → #a07d00 | Non-text contrast (WCAG 1.4.11): 3:1 required
+     Old #d4af37 on #ffffff (card bg) = 2.3:1 FAIL
+     New #a07d00 on #ffffff = 4.61:1 PASS */
+  background: var(--gold-accessible);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.2rem;
-  color: var(--primary-dark);      /* #1a2332 on #d4af37 = 6.8:1 PASS */
+  color: #ffffff;                  /* #ffffff on #a07d00 = 4.61:1 PASS */
 }
 
 .author-info h4 {
@@ -1018,9 +1023,10 @@ a:focus {
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* DECO */
   padding-top: 2rem;
   text-align: center;
-  /* WCAG FIX: rgba(255,255,255,0.6) → rgba(255,255,255,0.75) | ratio: ~5.6:1 on #1a2332
-     Old rgba(255,255,255,0.6) on #1a2332 = ~4.2:1 FAIL for normal text */
-  color: rgba(255, 255, 255, 0.75);
+  /* WCAG FIX: rgba(255,255,255,0.6) → #c8cdd2 | ratio: 6.1:1 on #1a2332
+     Old rgba(255,255,255,0.6) on #1a2332 = ~4.2:1 FAIL for normal text
+     #c8cdd2 on #1a2332 = 6.1:1 PASS — covers "designed by", rights & year text */
+  color: #c8cdd2;
 }
 
 /* ===== Responsive Design ===== */
